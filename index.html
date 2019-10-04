@@ -2,11 +2,17 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tactical Voting POC</title>
+        <link rel=stylesheet href="styles/style.css">
     </head>
     <body>
+        <header>
+            <h1>UK General Election Tactical Voting Lookup</h1>
+        </header>
+        <p>To get information about how to vote tactically in the (likely) upcoming UK General Election), enter your postcode below.</p>
         <form action="" method="POST">
-            <label for=postcode>Postcode</label>
+            <label for=postcode>Postcode:</label>
             <input id=postcode name=postcode type=text>
+            <button type=submit>Go</button>
         </form>
         <pre><code id=newpostcode></code></pre>
         <script
@@ -17,15 +23,13 @@
             $(() => {
                 $('form').submit((e) => {
                     const val = $('#postcode').val();
-                    $.get('https://mapit.mysociety.org/postcode/' + val.replace(/\s/g, '')).done((result) => {
-                        const wmc = result.shortcuts.WMC;
-                        const area = result.areas[wmc];
-                        const gss = area.codes.gss;
+                    $.get('https://api.postcodes.io/postcodes/' + val.replace(/\s/g, '')).done((result) => {
+                        const gss = result.result.codes.parliamentary_constituency;
 
                         $.get('data/recommendations.json').done((recommendations) => {
                             const constituency = recommendations.find(r => r.id === gss);
                             if (constituency) {
-                                $('#newpostcode').text("Constituency: " + constituency.Constituency);
+                                $('#newpostcode').text(JSON.stringify(constituency, null, 2));
                             } else {
                                 $('#newpostcode').text("Could not find constituency");
                             }
