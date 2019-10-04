@@ -26,7 +26,7 @@
                     $.get('https://api.postcodes.io/postcodes/' + val.replace(/\s/g, '')).done((result) => {
                         const gss = result.result.codes.parliamentary_constituency;
 
-                        $.get('/.netlify/functions/recommendations').done((recommendations) => {
+                        $.get('data/recommendations.json').done((recommendations) => {
                             const constituency = recommendations.find(r => r.id === gss);
                             if (constituency) {
                                 $('#newpostcode').text(JSON.stringify(constituency, null, 2));
