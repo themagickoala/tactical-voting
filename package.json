@@ -1,0 +1,26 @@
+{
+  "name": "tactical-voting",
+  "version": "1.0.0",
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/2db57c20-9f80-42bf-b076-5732caee9e38/deploy-status)](https://app.netlify.com/sites/tmk-tactical-voting/deploys)",
+  "main": "index.js",
+  "scripts": {
+    "build": "netlify-lambda build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themagickoala/tactical-voting.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/themagickoala/tactical-voting/issues"
+  },
+  "homepage": "https://github.com/themagickoala/tactical-voting#readme",
+  "devDependencies": {
+    "netlify-lambda": "^1.6.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
