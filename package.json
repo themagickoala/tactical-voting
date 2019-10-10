@@ -21,6 +21,7 @@
     "netlify-lambda": "^1.6.3"
   },
   "dependencies": {
+    "encoding": "^0.1.12",
     "node-fetch": "^2.6.0"
   }
 }
